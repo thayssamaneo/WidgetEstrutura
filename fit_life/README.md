@@ -154,7 +154,7 @@ O Sistema deve:
 - Rastreabilidade: Necessidade do Stakeholder 01
 
 **Critérios de aceitação**\
-[] Entrada de dados: Nome, Categoria, Preço, Quantidade\
+[] Entrada de dados: Nome, data de criação, data de conclusão\
 [] Validação dos campos\
 [] Verificação de duplicidade\
 [] Saída: Notificação para o usuário, atividade adicionada a lista
