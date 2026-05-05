@@ -5,6 +5,5 @@ class Atividade {
   DateTime criadaEm;
 
   // Construtor
-  Atividade({required this.titulo, this.concluida = false, DateTime ? criadaEm}): criadaEm ?? DateTime.now();
-
+  Atividade({required this.titulo, this.concluida = false, DateTime? dataCriacao,}): criadaEm = dataCriacao ?? DateTime.now();
 }

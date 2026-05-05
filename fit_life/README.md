@@ -101,7 +101,6 @@ flowchart TD
 O Sistema deve:
 
 * Registrar atividades;
-* Simular login;
 * Atualizar o estado de uma atividade;
 * Atualizar dados;
 * Alterar configurações;
@@ -115,7 +114,7 @@ O Sistema deve:
 
 | Usuários | Descrição |
 | - | - |
-| Atleta | Registrar atividades, realizar login, alterar configurações, visualizar informações, mmarcar uma atividade como concluída |
+| Atleta | Registrar atividades, alterar configurações, visualizar informações, mmarcar uma atividade como concluída |
 
 
 ---
@@ -173,19 +172,7 @@ O Sistema deve:
 [] Remover a atividade da lista de pendentes\
 [] Saída: Notificação para o usuário
 
-#### RF-03: Simular login
-
-**Descrição:** Simular o login do usuário.
-- Prioridade: Média
-- Versão: 1.0
-- Data: 2026-04-30
-- Rastreabilidade: Necessidade do Stakeholder 03
-
-**Critérios de aceitação**\
-[] Entrada de dados: nome, email e senha\
-[] Saída: Notificação para o usuário
-
-#### RF-04: Atualizar Dados
+#### RF-03: Atualizar Dados
 
 **Descrição:** Permitir que usuário atualize seus dados (nome, meta).
 - Prioridade: Alta
@@ -211,7 +198,7 @@ O Sistema deve:
 [] Aplicativo atualiza tema, notificações\
 [] Saída: Notificação para o usuário
 
-#### RF-06: Exibir Dados
+#### RF-05: Exibir Dados
 
 **Descrição:** Exibir as listas de atividades concluídas, pendentes, métricas de saúde.
 - Prioridade: Alta
@@ -266,10 +253,9 @@ Diagrama de casos de uso: O que o sistema deve fazer do ponto de vista do usuár
 
 flowchart LR
     Atleta --> UC1[Registrar nova atividade]
-    Atleta --> UC2[Realizar login]
-    Atleta --> UC3[Marcar atividade como concluída]
-    Atleta --> UC4[Alterar configurações e dados]
-    Atleta --> UC5[Visualizar seu progresso e métrica]
+    Atleta --> UC2[Marcar atividade como concluída]
+    Atleta --> UC3[Alterar configurações e dados]
+    Atleta --> UC4[Visualizar seu progresso e métrica]
     
 
 ```

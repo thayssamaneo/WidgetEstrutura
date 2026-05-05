@@ -5,7 +5,8 @@ class AtividadeController extends ChangeNotifier{
   final List<Atividade> _atividadesPendentes = [];
   final List<Atividade> _atividadesConcluidas = [];
 
-  List<Atividade> get atividades => _atividadesPendentes;
+  List<Atividade> get atividadesPendentes => _atividadesPendentes;
+  List<Atividade> get atividadesConcluidas => _atividadesConcluidas;
 
   // métodos 
 
@@ -19,27 +20,41 @@ class AtividadeController extends ChangeNotifier{
   }
 
   // atualizando/marcando como concluida
-  void updateAtividade(int index, String titulo){
-        _atividadesPendentes[index].concluida = !_atividadesPendentes[index].concluida;
-        // "!" -> Inverte o valor da booleana
+  void updateAtividade(int index){
+      Atividade atividade = _atividadesPendentes[index];
+      atividade.concluida = true;
 
-        _atividadesConcluidas.add(Atividade(titulo: titulo));
-        _atividadesPendentes.removeAt(index);
+      _atividadesConcluidas.add(atividade);
+      _atividadesPendentes.removeAt(index);
 
-        notifyListeners();
+      notifyListeners();
 
     }
 
-    // deletando uma tarefa
-    void excluirAtividade(int index){
+    // deletando uma tarefa da lista de concluidas
+    void excluirAtividadeConcl(int index){
       _atividadesConcluidas.removeAt(index);
+      notifyListeners();
+    }
+
+    // deletando uma tarefa da lista de pendentes
+    void excluirAtividadePend(int index){
+      _atividadesPendentes.removeAt(index);
       notifyListeners();
     }
 
     // métricas de saúde
 
-    // total tarefas pendentes
+    // total atividades pendentes
     int get totalAtivPend => _atividadesPendentes.length;
 
+    // total atividades concluidas
     int get totalAtivConcl => _atividadesConcluidas.length;
+
+    int get totalatividades => totalAtivConcl + totalAtivPend;
+     
+    double get porcentagemAtivConcl {
+      if (totalatividades == 0) return 0;
+      return (totalAtivConcl / totalatividades);
+    }
 }
