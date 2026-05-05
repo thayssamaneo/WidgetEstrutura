@@ -7,7 +7,6 @@ class ConfiguracoesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Usamos context.read para ações e watch para valores
     final controller = context.watch<AtividadeController>();
 
     return Scaffold(
@@ -24,7 +23,6 @@ class ConfiguracoesView extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // 1. Tema Claro/Escuro
           Card(
             child: SwitchListTile(
               title: const Text("Tema Escuro"),
@@ -44,7 +42,6 @@ class ConfiguracoesView extends StatelessWidget {
               title: const Text("Configurar Notificações"),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
               onTap: () {
-                // Lógica de notificações
               },
             ),
           ),

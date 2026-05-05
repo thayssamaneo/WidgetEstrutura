@@ -38,7 +38,7 @@ class DashboardView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GridView.count(
-          crossAxisCount: 2, // 2 colunas como no seu desenho
+          crossAxisCount: 2,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
           children: [
@@ -70,7 +70,7 @@ class DashboardView extends StatelessWidget {
   Widget _metricas(String titulo, String valor, IconData icone) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[300], // Cor cinza do wireframe
+        color: Colors.grey[300], 
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(

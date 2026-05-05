@@ -70,13 +70,12 @@ class AtividadesPendentes extends StatelessWidget {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: Colors.blueAccent, // Botão rosa do wireframe
+                        color: Colors.blueAccent, 
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: IconButton(
                         icon: const Icon(Icons.check, color: Colors.white),
                         onPressed: () {
-                          // Chama o método que criamos no seu Controller
                           controller.updateAtividade(index);
                         },
                       ),
@@ -120,12 +119,9 @@ class AtividadesPendentes extends StatelessWidget {
                         ElevatedButton(
                           onPressed: () {
                             if (textController.text.trim().isNotEmpty) {
-                              // 1. Acessa o controller e chama o método createAtividade
-                              // Usamos listen: false porque estamos dentro de uma função (callback)
                               Provider.of<AtividadeController>(context, listen: false)
                                   .createAtividade(textController.text);
                               
-                              // 2. Fecha o diálogo
                               Navigator.pop(context);
                             }
                           },

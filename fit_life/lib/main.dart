@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // O Provider observa o controller aqui
     final controller = context.watch<AtividadeController>();
 
     return MaterialApp(
@@ -38,7 +37,6 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
-      // Aqui está a mágica: ele escolhe qual tema usar baseado no Controller
       themeMode: controller.isDarkMode ? ThemeMode.dark : ThemeMode.light,
       initialRoute: "/",
       routes: {

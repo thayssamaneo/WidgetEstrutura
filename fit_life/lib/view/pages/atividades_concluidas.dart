@@ -7,7 +7,6 @@ class AtividadesConcluidasView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Escuta a lista de concluídas do controller
     final controller = context.watch<AtividadeController>();
 
     return Scaffold(
@@ -19,10 +18,9 @@ class AtividadesConcluidasView extends StatelessWidget {
           ],
         ),
         centerTitle: true,
-        backgroundColor: Colors.blueAccent, // Cor solicitada
+        backgroundColor: Colors.blueAccent, 
       ),
 
-      // Reaproveitando o Drawer (Menu Lateral)
       drawer: Drawer(
         child: Column(
           children: [
@@ -59,7 +57,6 @@ class AtividadesConcluidasView extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               itemCount: controller.totalAtivConcl,
               itemBuilder: (context, index) {
-                // IMPORTANTE: Pegando da lista de CONCLUÍDAS
                 final atividade = controller.atividadesConcluidas[index];
 
                 return Card(
@@ -70,20 +67,19 @@ class AtividadesConcluidasView extends StatelessWidget {
                       atividade.titulo,
                       style: const TextStyle(
                         fontSize: 18,
-                        decoration: TextDecoration.lineThrough, // Estilo de riscado
+                        decoration: TextDecoration.lineThrough,
                       ),
                     ),
                     trailing: Container(
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: Colors.blueAccent, // Botão azul conforme solicitado
+                        color: Colors.blueAccent, 
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: IconButton(
                         icon: const Icon(Icons.delete, color: Colors.white),
                         onPressed: () {
-                          // Chama o método de excluir que criamos no controller
                           controller.excluirAtividadeConcl(index);
                         },
                       ),
@@ -93,7 +89,6 @@ class AtividadesConcluidasView extends StatelessWidget {
               },
             ),
 
-      // Barra inferior azul
       bottomNavigationBar: BottomAppBar(
         color: Colors.blueAccent,
         child: Row(
