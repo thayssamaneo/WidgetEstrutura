@@ -70,7 +70,7 @@ class DashboardView extends StatelessWidget {
   Widget _metricas(String titulo, String valor, IconData icone) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[300], 
+        color: Colors.blue[200], 
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -79,7 +79,7 @@ class DashboardView extends StatelessWidget {
           Icon(icone, color: Colors.blue, size: 30),
           const SizedBox(height: 10),
           Text(valor, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-          Text(titulo, style: const TextStyle(fontSize: 14, color: Colors.black54)),
+          Text(titulo, style: const TextStyle(fontSize: 14,)),
         ],
       ),
     );
