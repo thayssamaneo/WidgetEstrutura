@@ -65,7 +65,7 @@ class ConfiguracoesView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(icon: const Icon(Icons.home, color: Colors.white), 
+            IconButton(icon: const Icon(Icons.dashboard, color: Colors.white), 
               onPressed: () => Navigator.pushNamed(context, '/dashboard')),
             IconButton(icon: const Icon(Icons.list, color: Colors.white), 
               onPressed: () => Navigator.pushNamed(context, '/ativMenu')),
