@@ -43,6 +43,12 @@ class AtividadeController extends ChangeNotifier{
       notifyListeners();
     }
 
+    void resetarTudo() {
+      _atividadesPendentes.clear();
+      _atividadesConcluidas.clear();
+      notifyListeners(); // Isso fará a Dashboard e as listas zerarem instantaneamente
+    }
+
     // métricas de saúde
 
     // total atividades pendentes
@@ -57,4 +63,14 @@ class AtividadeController extends ChangeNotifier{
       if (totalatividades == 0) return 0;
       return (totalAtivConcl / totalatividades);
     }
+
+    // Modo claro e escuro
+    bool _darkMode = false;
+
+    bool get isDarkMode => _darkMode;
+
+    void mudarTema(bool valor) {
+      _darkMode = valor;
+      notifyListeners(); 
+  }
 }

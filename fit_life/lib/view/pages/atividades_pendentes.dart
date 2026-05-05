@@ -34,7 +34,7 @@ class AtividadesPendentes extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Dashboard"),
-              onTap: () => Navigator.pop(context),
+              onTap: () => Navigator.pushNamed(context, '/dashboard'),
             ),
             ListTile(
               title: const Text("Atividades pendentes"),
@@ -47,11 +47,7 @@ class AtividadesPendentes extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Configurações"),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              title: const Text("Ajuda"),
-              onTap: () => Navigator.pop(context),
+              onTap: () => Navigator.pushNamed(context, '/config'),
             ),
           ],
         ),
@@ -66,7 +62,6 @@ class AtividadesPendentes extends StatelessWidget {
                 final atividade = controller.atividadesPendentes[index];
 
                 return Card(
-                  color: Colors.grey[300], // Cor de fundo dos itens no wireframe
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -98,11 +93,52 @@ class AtividadesPendentes extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(icon: const Icon(Icons.dashboard), onPressed: () {}),
-              IconButton(icon: const Icon(Icons.add_circle, size: 30), onPressed: () {
-                // Aqui você pode chamar o controller.createAtividade("Nova")
+              IconButton(icon: const Icon(Icons.dashboard), onPressed: () {
+                Navigator.pushNamed(context, '/dashboard');
               }),
-              IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
+              IconButton(icon: const Icon(Icons.add_circle, size: 30), onPressed: () {
+                final TextEditingController textController = TextEditingController();
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text("Nova Atividade"),
+                      content: TextField(
+                        controller: textController,
+                        decoration: const InputDecoration(
+                          hintText: "Digite o nome da atividade...",
+                        ),
+                        autofocus: true,
+                      ),
+                      actions: [
+                        // Botão Cancelar
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text("Cancelar"),
+                        ),
+                        // Botão Adicionar
+                        ElevatedButton(
+                          onPressed: () {
+                            if (textController.text.trim().isNotEmpty) {
+                              // 1. Acessa o controller e chama o método createAtividade
+                              // Usamos listen: false porque estamos dentro de uma função (callback)
+                              Provider.of<AtividadeController>(context, listen: false)
+                                  .createAtividade(textController.text);
+                              
+                              // 2. Fecha o diálogo
+                              Navigator.pop(context);
+                            }
+                          },
+                          child: const Text("Adicionar"),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }),
+              IconButton(icon: const Icon(Icons.settings), onPressed: () {
+                Navigator.pushNamed(context, '/config');
+              }),
             ],
           ),
         ),

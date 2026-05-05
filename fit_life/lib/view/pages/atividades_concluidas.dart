@@ -34,7 +34,7 @@ class AtividadesConcluidasView extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Dashboard"),
-              onTap: () => Navigator.pushNamed(context, '/'), // Exemplo de rota
+              onTap: () => Navigator.pushNamed(context, '/dashboard'), // Exemplo de rota
             ),
             ListTile(
               title: const Text("Atividades pendentes"),
@@ -47,11 +47,7 @@ class AtividadesConcluidasView extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Configurações"),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              title: const Text("Ajuda"),
-              onTap: () => Navigator.pop(context),
+              onTap: () => Navigator.pushNamed(context, '/config'),
             ),
           ],
         ),
@@ -67,7 +63,6 @@ class AtividadesConcluidasView extends StatelessWidget {
                 final atividade = controller.atividadesConcluidas[index];
 
                 return Card(
-                  color: Colors.grey[300],
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -104,9 +99,15 @@ class AtividadesConcluidasView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(icon: const Icon(Icons.dashboard, color: Colors.white), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.check_circle, color: Colors.white), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.settings, color: Colors.white), onPressed: () {}),
+            IconButton(icon: const Icon(Icons.dashboard, color: Colors.white), onPressed: () {
+              Navigator.pushNamed(context, '/dashboard');
+            }),
+            IconButton(icon: const Icon(Icons.add_circle, color: Colors.white), onPressed: () {
+              Navigator.pushNamed(context, '/ativMenu');
+            }),
+            IconButton(icon: const Icon(Icons.settings, color: Colors.white), onPressed: () {
+              Navigator.pushNamed(context, '/config');
+            }),
           ],
         ),
       ),
